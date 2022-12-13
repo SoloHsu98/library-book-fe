@@ -85,7 +85,7 @@ const BrowseBooks = () => {
 
   useEffect(() => {
     getAllBooks();
-  }, [query, filter]);
+  }, [query, filter, allBooks]);
 
   const getAllBooks = async () => {
     setLoading(true);
@@ -131,6 +131,7 @@ const BrowseBooks = () => {
           data: filter?.orderBy?.length > 0 ? filter?.orderBy : null,
         },
       });
+      console.log("books", books);
       const booksInfo = books?.data?.map((book) => {
         return {
           id: book?.id,
