@@ -91,12 +91,12 @@ const BrowseBooks = () => {
     setLoading(true);
     let filters = { and: [] };
 
-    // filters.and = {
-    //   or: [
-    //     { title: { containsi: query.keywords } },
-    //     { authors: { name: { containsi: query.keywords } } },
-    //   ],
-    // };
+    filters.and = {
+      or: [
+        { title: { containsi: query.keywords } },
+        { authors: { name: { containsi: query.keywords } } },
+      ],
+    };
 
     // if (filter?.genre?.length > 0) {
     //   filters.and = _.concat(filters.and, {
@@ -123,7 +123,7 @@ const BrowseBooks = () => {
         variables: {
           page: query.page,
           pageSize: query.sizePerPage,
-          // filters: filters,
+          filters: filters,
           //data: filter?.orderBy?.length > 0 ? filter?.orderBy : null,
         },
       });
