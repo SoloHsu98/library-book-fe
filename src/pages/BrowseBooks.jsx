@@ -91,7 +91,7 @@ const BrowseBooks = () => {
     setLoading(true);
     let filters = { and: [] };
 
-    filters = {
+    filters.and = {
       and: {
         or: [
           { title: { containsi: query.keywords } },
