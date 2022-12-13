@@ -85,7 +85,10 @@ const BrowseBooks = () => {
 
   useEffect(() => {
     getAllBooks();
-  }, [query, filter, allBooks]);
+  }, []);
+  useEffect(() => {
+    getAllBooks();
+  }, [query, filter]);
 
   const getAllBooks = async () => {
     setLoading(true);
