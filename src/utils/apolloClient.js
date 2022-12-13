@@ -4,7 +4,7 @@ import { HttpLink } from "apollo-link-http";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: "http://0.0.0.0:7131/admin",
+  uri: "https://library-book-be-production-c63c.up.railway.app/graphql",
 });
 const client = new ApolloClient({
   cache,
