@@ -124,7 +124,7 @@ const NewItem = () => {
         {info.map((book) => (
           <div key={book.id}>
             <div css={styles.imageCard}>
-              <img src={`${book?.poster}`} alt="trending" />
+              <img src={`${API_URL}${book?.poster}`} alt="trending" />
               <div>
                 <span css={styles.ratingIcon}>
                   <AiFillStar size={32} color="#fff" />
