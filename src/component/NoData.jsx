@@ -1,11 +1,14 @@
 import React from "react";
-import NoDataIcon from "./icons/NoDataIcon";
+import NoDataIcon from "../assets/nodata.png";
 import { css } from "@emotion/react";
 const NoData = () => {
   return (
     <div css={styles.emptyWrapper}>
-      <NoDataIcon />
-      <p className="text-white">There is no data related with your account</p>
+      <img src={NoDataIcon} alt="nodata" css={styles.noDataImg} />
+
+      <p className="text-white mt-2">
+        There is no data related with your account
+      </p>
     </div>
   );
 };
@@ -17,5 +20,8 @@ const styles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  `,
+  noDataImg: css`
+    border-radius: 50%;
   `,
 };
