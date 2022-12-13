@@ -6,7 +6,10 @@ import apolloClient from "../utils/apolloClient";
 import AuthContext from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import RegisterIcon from "../component/icons/RegisterIcon";
+import { useNavigate, useLocation } from "react-router-dom";
+
 const Register = () => {
+  const navigate = useNavigate();
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   const EMAIL_REGEX = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -30,6 +33,7 @@ const Register = () => {
     e.preventDefault();
     const nameValidation = USER_REGEX.test(username);
     const passwordValidation = PWD_REGEX.test(pwd);
+
     if (!nameValidation || !passwordValidation) {
       setErrMsg("Invalid Entry");
       return;
@@ -52,9 +56,11 @@ const Register = () => {
           jwt: data?.register?.jwt,
         });
       }
+
       if (errors) {
-        console.log("login errors", errors);
+        console.log("register errors", errors);
       }
+      navigate("/");
     } catch (error) {
       console.log("error", error.message);
     }
@@ -76,7 +82,6 @@ const Register = () => {
     setErrMsg("");
   }, [username, pwd, matchPwd]);
 
-  console.log("validation", validName, validMatch, validPwd);
   return (
     <div className="formContainer">
       <form className="registerForm">
