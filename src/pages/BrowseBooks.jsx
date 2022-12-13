@@ -91,29 +91,29 @@ const BrowseBooks = () => {
     setLoading(true);
     let filters = { and: [] };
 
-    filters.and = {
-      or: [
-        { title: { containsi: query.keywords } },
-        { authors: { name: { containsi: query.keywords } } },
-      ],
-    };
+    // filters.and = {
+    //   or: [
+    //     { title: { containsi: query.keywords } },
+    //     { authors: { name: { containsi: query.keywords } } },
+    //   ],
+    // };
 
-    if (filter?.genre?.length > 0) {
-      filters.and = _.concat(filters.and, {
-        genre: { eq: filter.genre },
-      });
-    }
-    if (filter?.rating?.length > 0) {
-      filters.and = _.concat(filters.and, {
-        rating: { gte: parseFloat(filter?.rating?.charAt(0)) },
-      });
-    }
-    if (filter?.year?.length > 0) {
-      filters.and = _.concat(filters.and, {
-        year: { in: parseInt(filter?.year.split(" - ")) },
-      });
-    }
-    console.log("filter", filters);
+    // if (filter?.genre?.length > 0) {
+    //   filters.and = _.concat(filters.and, {
+    //     genre: { eq: filter.genre },
+    //   });
+    // }
+    // if (filter?.rating?.length > 0) {
+    //   filters.and = _.concat(filters.and, {
+    //     rating: { gte: parseFloat(filter?.rating?.charAt(0)) },
+    //   });
+    // }
+    // if (filter?.year?.length > 0) {
+    //   filters.and = _.concat(filters.and, {
+    //     year: { in: parseInt(filter?.year.split(" - ")) },
+    //   });
+    // }
+    // console.log("filter", filters);
     try {
       const {
         data: { books },
@@ -123,8 +123,8 @@ const BrowseBooks = () => {
         variables: {
           page: query.page,
           pageSize: query.sizePerPage,
-          filters: filters,
-          data: filter?.orderBy?.length > 0 ? filter?.orderBy : null,
+          // filters: filters,
+          //data: filter?.orderBy?.length > 0 ? filter?.orderBy : null,
         },
       });
       console.log("books", books);
