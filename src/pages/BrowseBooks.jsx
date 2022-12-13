@@ -100,21 +100,21 @@ const BrowseBooks = () => {
       },
     };
 
-    // if (filter?.genre?.length > 0) {
-    //   filters.and = _.concat(filters.and, {
-    //     genre: { eq: filter.genre },
-    //   });
-    // }
-    // if (filter?.rating?.length > 0) {
-    //   filters.and = _.concat(filters.and, {
-    //     rating: { gte: parseFloat(filter?.rating?.charAt(0)) },
-    //   });
-    // }
-    // if (filter?.year?.length > 0) {
-    //   filters.and = _.concat(filters.and, {
-    //     year: { in: parseInt(filter?.year.split(" - ")) },
-    //   });
-    // }
+    if (filter?.genre?.length > 0) {
+      filters.and = _.concat(filters.and, {
+        genre: { eq: filter.genre },
+      });
+    }
+    if (filter?.rating?.length > 0) {
+      filters.and = _.concat(filters.and, {
+        rating: { gte: parseFloat(filter?.rating?.charAt(0)) },
+      });
+    }
+    if (filter?.year?.length > 0) {
+      filters.and = _.concat(filters.and, {
+        year: { in: parseInt(filter?.year.split(" - ")) },
+      });
+    }
     // console.log("filter", filters);
     try {
       const {
