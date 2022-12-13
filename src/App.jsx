@@ -4,7 +4,7 @@ import { GET_USERS } from "./graphql/queries/user";
 import apolloClient from "./utils/apolloClient";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Custom404 from "./pages/404";
-import Register from "./pages/register";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
 import Detail from "./pages/Detail";
