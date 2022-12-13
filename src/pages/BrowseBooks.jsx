@@ -91,14 +91,10 @@ const BrowseBooks = () => {
     setLoading(true);
     let filters = { and: [] };
 
-    filters = {
-      and: [
-        {
-          or: [
-            { title: { containsi: query.keywords } },
-            { authors: { name: { containsi: query.keywords } } },
-          ],
-        },
+    filters.and = {
+      or: [
+        { title: { containsi: query.keywords } },
+        { authors: { name: { containsi: query.keywords } } },
       ],
     };
 
@@ -117,7 +113,7 @@ const BrowseBooks = () => {
         year: { in: parseInt(filter?.year.split(" - ")) },
       });
     }
-
+    console.log("filter", filters);
     try {
       const {
         data: { books },
