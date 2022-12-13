@@ -89,7 +89,7 @@ const BrowseBooks = () => {
 
   const getAllBooks = async () => {
     setLoading(true);
-    let filters = {};
+    let filters = { and: [] };
 
     filters = {
       and: {
