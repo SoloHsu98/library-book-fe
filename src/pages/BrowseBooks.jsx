@@ -89,9 +89,9 @@ const BrowseBooks = () => {
 
   const getAllBooks = async () => {
     setLoading(true);
-    let filters = { and: [] };
+    let filters = {};
 
-    filters.and = {
+    filters = {
       or: [
         { title: { containsi: query.keywords } },
         { authors: { name: { containsi: query.keywords } } },
