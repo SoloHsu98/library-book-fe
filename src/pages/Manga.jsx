@@ -115,7 +115,7 @@ const Manga = () => {
     <>
       <Navbar />
       <div css={styles.container}>
-        <h2 css={styles.title}>Genre - Romance</h2>
+        <h2 css={styles.title}>Genre - Manga</h2>
         {loading && <Loading />}
         {info?.length === 0 && <NoData />}
         <div css={styles.bookContainer}>

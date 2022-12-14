@@ -116,7 +116,7 @@ const Comedy = () => {
     <>
       <Navbar />
       <div css={styles.container}>
-        <h2 css={styles.title}>Genre - Romance</h2>
+        <h2 css={styles.title}>Genre - Comedy</h2>
         {loading && <Loading />}
         {info?.length === 0 && <NoData />}
         <div css={styles.bookContainer}>
