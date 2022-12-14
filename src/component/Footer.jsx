@@ -5,19 +5,20 @@ import Telegram from "./icons/Telegram";
 import Twitter from "./icons/Twitter";
 import Xmax from "./icons/Xmax";
 
-
 const Footer = () => {
   return (
-    <footer  style={{
-      color: "white",
-      backgroundColor: "#444444",
-    }}>
+    <footer
+      style={{
+        color: "white",
+        backgroundColor: "#444444",
+      }}
+    >
       <div className="container">
         <div className="row">
-          <div className="col-8" >
+          <div className="col-8">
             <div
               className="d-flex flex-row justify-content-between align-items-center"
-              style={{ height: "200px" }}
+              style={{ height: "100%" }}
             >
               <div className="d-flex flex-column align-items-start">
                 <h4>Product</h4>
@@ -29,7 +30,6 @@ const Footer = () => {
                   Web-design
                   <br />
                   Content
-                  
                 </div>
               </div>
               <div className="d-flex flex-column align-items-start ">
@@ -77,34 +77,38 @@ const Footer = () => {
               className="d-flex flex-row justify-content-center align-items-center"
               style={{ height: "200px" }}
             >
-              <Xmax/>
-              
+              <Xmax />
             </div>
           </div>
         </div>
         <hr />
         <div className="text-center">
-          <span className="mx-2"><FacebookIcon/></span>
-          <span className="mx-2"><Twitter/></span>
-          <span className="mx-2"> <Instagram/></span>
-          <span className="mx-2"><Telegram/></span>
-          
-          
-          
-          
+          <span className="mx-2">
+            <FacebookIcon />
+          </span>
+          <span className="mx-2">
+            <Twitter />
+          </span>
+          <span className="mx-2">
+            {" "}
+            <Instagram />
+          </span>
+          <span className="mx-2">
+            <Telegram />
+          </span>
         </div>
-        <div className="d-flex flex-row justify-content-center align-items-center my-3" style={{cursor:"pointer"}}>
-         <span className="mx-3">Privacy Policy</span>
-         <span  className="mx-3">Terms of Use</span>
-         <span  className="mx-3">Sales and Refunds</span>
-         <span  className="mx-3">Legal</span>
-         <span  className="mx-3">Site Map</span>
+        <div
+          className="d-flex flex-row justify-content-center align-items-center my-3"
+          style={{ cursor: "pointer" }}
+        >
+          <span className="mx-3">Privacy Policy</span>
+          <span className="mx-3">Terms of Use</span>
+          <span className="mx-3">Sales and Refunds</span>
+          <span className="mx-3">Legal</span>
+          <span className="mx-3">Site Map</span>
         </div>
-        <div className="text-center my-4 py-3" >
-          @2021 All Rights Served
-        </div>
+        <div className="text-center my-4 py-3">@2021 All Rights Served</div>
       </div>
-    
     </footer>
   );
 };
