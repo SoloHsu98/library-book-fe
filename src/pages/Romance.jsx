@@ -229,7 +229,7 @@ const styles = {
     padding: 2em;
     padding-bottom: 0;
     background-color: #2b3341;
-    height: 100vh;
+    min-height: 100vh;
   `,
   title: css`
     font-size: 1.5em;

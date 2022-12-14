@@ -452,7 +452,7 @@ export default BrowseBooks;
 const styles = {
   mainContainer: css`
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     padding: 2em;
     padding-top: 3em;
     color: #fff;
