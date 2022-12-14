@@ -11,18 +11,27 @@ import { GET_ALL_BOOKS } from "../graphql/queries/book";
 import Navbar from "../component/Navbar";
 import Loading from "../component/Loading";
 import NoData from "../component/NoData";
-
+import SuccessModal from "../component/SuccessModal";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { UNSAVE_BOOK } from "../graphql/mutations/book";
 const BrowseBooks = () => {
+  const [actionStatus, setActionStatus] = useState("");
   const [allBooks, setAllBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [removeSuccessModalOpen, setRemoveSuccessModalOpen] = useState(false);
   const [query, setQuery] = useState({
     page: 1,
     sizePerPage: 20,
     keywords: "",
   });
-
+  const [modalOpen, setModalOpen] = useState({
+    unsaved: false,
+    saved: false,
+  });
   const [pageCount, setPageCount] = useState(0);
   const [filter, setFilter] = useState([]);
+  const [saveBook, setSaveBook] = useState(null);
+  const [fetch, setFetch] = useState(null);
   const [filterItems, setFilterItems] = useState({
     genre: "",
     rating: "",
@@ -85,7 +94,7 @@ const BrowseBooks = () => {
 
   useEffect(() => {
     getAllBooks();
-  }, [query, filter]);
+  }, [query, filter, fetch]);
 
   const getAllBooks = async () => {
     setLoading(true);
@@ -155,8 +164,60 @@ const BrowseBooks = () => {
       setLoading(false);
     }
   };
+  const [updateBook, { error: err }] = useMutation(UNSAVE_BOOK, {
+    client: apolloClient,
+    onCompleted: () => {
+      setFetch(uuid());
+      setRemoveSuccessModalOpen(true);
+    },
+    onError: (err) => alert(err),
+  });
+
+  const unsaveBook = async () => {
+    setActionStatus("unsaved");
+    await updateBook({
+      variables: {
+        id: parseInt(saveBook?.id),
+        data: {
+          saved: false,
+        },
+      },
+    });
+    handleBookModalClose("unsaved");
+  };
+  const saveBookItem = async () => {
+    setActionStatus("saved");
+    await updateBook({
+      variables: {
+        id: parseInt(saveBook?.id),
+        data: {
+          saved: true,
+        },
+      },
+    });
+    handleBookModalClose("saved");
+  };
+  const handleBookModalOpen = (name) => {
+    console.log("name", name);
+    setModalOpen({
+      [name]: true,
+    });
+  };
+  const handleBookModalClose = (name) => {
+    setModalOpen({
+      [name]: false,
+    });
+  };
   const handleSearch = (e) => {
     setQuery({ ...query, keywords: e.target.value });
+  };
+  const handleBookSave = (book) => {
+    if (book?.saved) {
+      handleBookModalOpen("unsaved");
+    } else {
+      handleBookModalOpen("saved");
+    }
+    setSaveBook(book);
   };
   return (
     <div>
@@ -286,7 +347,12 @@ const BrowseBooks = () => {
                       >
                         <button css={styles.viewDetailBtn}>View Detail</button>
                       </Link>
-                      <button css={styles.saveBtn}>Save</button>
+                      <button
+                        css={styles.saveBtn}
+                        onClick={() => handleBookSave(book)}
+                      >
+                        Save
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -306,6 +372,76 @@ const BrowseBooks = () => {
           )}
         </div>
       </div>
+      {modalOpen?.unsaved && (
+        <Modal
+          isOpen={modalOpen?.unsaved}
+          toggle={() => handleBookModalClose("unsaved")}
+          centered
+        >
+          <ModalHeader toggle={() => handleBookModalClose("unsaved")}>
+            Already Saved
+          </ModalHeader>
+          <ModalBody>
+            It's already saved.You can view your saved books in saved page.
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              className="closeBtn w-25"
+              onClick={() => handleBookModalClose("unsaved")}
+            >
+              Cancel
+            </Button>{" "}
+            <Button className="registerBtn w-25" onClick={unsaveBook}>
+              Unsave
+            </Button>
+          </ModalFooter>
+        </Modal>
+      )}
+      {modalOpen?.saved && (
+        <Modal
+          isOpen={modalOpen?.saved}
+          toggle={() => handleBookModalClose("saved")}
+          centered
+        >
+          <ModalHeader toggle={() => handleBookModalClose("saved")}>
+            Save Book
+          </ModalHeader>
+          <ModalBody>
+            Do you want to save the book : <b>{saveBook?.title} </b>?
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              className="closeBtn w-25"
+              onClick={() => handleBookModalClose("saved")}
+            >
+              Cancel
+            </Button>{" "}
+            <Button className="registerBtn w-25" onClick={saveBookItem}>
+              Save
+            </Button>
+          </ModalFooter>
+        </Modal>
+      )}
+      {removeSuccessModalOpen && (
+        <SuccessModal
+          open={removeSuccessModalOpen}
+          onClose={() => {
+            setRemoveSuccessModalOpen(false);
+          }}
+          title={actionStatus == "saved" ? "Save Book" : "Unsaved Book"}
+          bodyValue={
+            actionStatus == "saved" ? (
+              <span>
+                Book : <b>{saveBook?.title} </b> is saved
+              </span>
+            ) : (
+              <span>
+                Book : <b>{saveBook?.title} </b> is unsaved
+              </span>
+            )
+          }
+        />
+      )}
     </div>
   );
 };
