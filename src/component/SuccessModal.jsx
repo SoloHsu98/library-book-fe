@@ -19,7 +19,7 @@ const SuccessModal = ({ open, onClose, title, bodyValue }) => {
             <img
               src={SuccessImg}
               alt="successImage"
-              style={{ borderRadius: "50%" }}
+              style={{ borderRadius: "50%", width: "150px", height: "150px" }}
             />
           </span>
           <span className="title">{title}</span>
