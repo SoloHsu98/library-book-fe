@@ -328,6 +328,7 @@ const styles = {
     align-items: center;
     justify-content: center;
     gap: 2em 4em;
+    padding-bottom: 2em;
   `,
   seeAllBtn: css`
     font-size: 1rem;

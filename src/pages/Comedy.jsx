@@ -329,6 +329,7 @@ const styles = {
     justify-content: center;
     gap: 2em 4em;
     height: 100vh;
+    padding-bottom: 2em;
   `,
   seeAllBtn: css`
     font-size: 1rem;
