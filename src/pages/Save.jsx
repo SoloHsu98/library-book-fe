@@ -161,7 +161,7 @@ const styles = {
   container: css`
     padding: 2em;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #2b3341;
   `,
   title: css`
