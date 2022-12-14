@@ -1,7 +1,7 @@
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { css } from "@emotion/react";
 import SuccessIcon from "./icons/SuccessIcon";
-
+import SuccessImg from "../assets/success.png";
 const SuccessModal = ({ open, onClose, title, bodyValue }) => {
   return (
     <Modal
@@ -16,7 +16,11 @@ const SuccessModal = ({ open, onClose, title, bodyValue }) => {
       <ModalBody>
         <div className="d-grid align-items-center justify-content-center">
           <span className="text-center">
-            <SuccessIcon />
+            <img
+              src={SuccessImg}
+              alt="successImage"
+              style={{ borderRadius: "50%" }}
+            />
           </span>
           <span className="title">{title}</span>
           {bodyValue}
