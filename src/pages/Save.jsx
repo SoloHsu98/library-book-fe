@@ -82,8 +82,9 @@ const Save = () => {
       <div css={styles.container}>
         <h2 css={styles.title}>All Saved Books</h2>
         {loading && <Loading />}
-        {info?.length === 0 && <NoData />}
+
         <div css={styles.bookContainer}>
+          {info?.length === 0 && <NoData />}
           {info.map((book) => (
             <div key={book.id}>
               <div css={styles.imageCard}>
