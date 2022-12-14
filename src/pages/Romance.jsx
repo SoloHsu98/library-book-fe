@@ -227,6 +227,7 @@ export default Romance;
 const styles = {
   container: css`
     padding: 2em;
+    padding-bottom: 0;
     background-color: #2b3341;
     height: 100vh;
   `,

@@ -229,6 +229,7 @@ const styles = {
     padding: 2em;
     background-color: #2b3341;
     height: 100vh;
+    padding-bottom: 0;
   `,
   title: css`
     font-size: 1.5em;
