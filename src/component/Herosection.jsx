@@ -26,13 +26,14 @@ const Herosection = () => {
       <img src={HeroImg} alt="hero-image" css={styles.heroImg} />
 
       <div css={styles.content}>
-        <h1>
+        {/* <h1>
           <b>SPECIAL</b> <span style={{ color: "blue" }}>50% OFF</span>
         </h1>
         <h1>
           <b>FOR </b>
           <span style={{ color: "red" }}>CHRISTMAS</span>
-        </h1>
+        </h1> */}
+        <h1>A Book is a Gift You Can Open Again and Again ...</h1>
       </div>
     </div>
 
@@ -82,7 +83,7 @@ const styles = {
     top: 30%;
     left: 50%;
     text-align: center;
-
+    color: #2b3a55;
     p {
       font-size: 3rem;
       font-weight: 600;
